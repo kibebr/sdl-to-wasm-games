@@ -10,16 +10,16 @@ static const int DEFAULT_HEIGHT = 20;
 static const int DEFAULT_TAILS_N = 10;
 
 struct TailNode{
-	SDL_Rect rect;
-	struct TailNode *next;
-	struct TailNode *previous;
+    SDL_Rect rect;
+    struct TailNode *next;
+    struct TailNode *previous;
 };
 
 struct Snake{
-	int dx;
-	int dy;
-	int size;
-	struct TailNode head;
+    int dx;
+    int dy;
+    int size;
+    struct TailNode head;
 };
 
 enum direction{LEFT, RIGHT, UP, DOWN};
