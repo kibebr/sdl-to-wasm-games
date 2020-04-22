@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
+
+#ifdef __EMSCRIPTEN__
 #include <emscripten.h>
+#endif
+
 #include "main.h"
 #include "snake.h"
 #include "apple.h"
@@ -66,8 +70,17 @@ int main(int argc, char* args[])
 {
     if(!init())
         return -1;
-    else
-        emscripten_set_main_loop(main_loop, 0, 1);
+    else{
+
+        #ifdef __EMSCRIPTEN__
+            emscripten_set_main_loop(main_loop, 0, 1);
+        #endif
+
+        #ifndef __EMSCRIPTEN__
+            while(running)
+                main_loop();
+        #endif
+    }
     
     quit_game();
     return 0;
@@ -99,7 +112,6 @@ void handle_events()
 }
 
 void quit_game(void){
-    emscripten_cancel_main_loop();
     SDL_DestroyWindow(window);
     window = NULL;
 
@@ -108,6 +120,10 @@ void quit_game(void){
 
     free_tails();
     SDL_Quit();
+
+    #ifdef __EMSCRIPTEN__
+    emscripten_cancel_main_loop();
+    #endif
 }
 
 void set_freeze(bool b)
