@@ -7,7 +7,7 @@ static const int DEFAULT_Y = 10;
 static const int DEFAULT_WIDTH = 20;
 static const int DEFAULT_HEIGHT = 20;
 
-static const int DEFAULT_TAILS_N = 10;
+static const int DEFAULT_TAILS_N = 3;
 
 struct TailNode{
     SDL_Rect rect;
