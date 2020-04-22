@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <emscripten.h>
 #include "main.h"
 #include "snake.h"
 #include "apple.h"
 
-void handle_events(SDL_Event* e);
+void handle_events(void);
 void quit(void);
 
 SDL_Window *window;
 SDL_Renderer *renderer;
+SDL_Event e;
 
 bool running = false;
 bool frozen = false;
@@ -43,43 +45,42 @@ bool init(void){
 	return success;
 }
 
+void main_loop(void){
+	handle_events();
+
+	if(frozen)
+		return;
+
+	SDL_SetRenderDrawColor(renderer, 18, 1, 54, SDL_ALPHA_OPAQUE);
+	SDL_RenderClear(renderer);
+
+	update_snake();
+	render_apple();
+
+	SDL_RenderPresent(renderer);
+
+	SDL_Delay(50);	
+}
+
 int main(int argc, char* args[])
 {
 	if(!init())
 		return -1;
-	else{
-		SDL_Event e;
-
-		while(running){
-			handle_events(&e);
-
-			if(frozen)
-				continue;
-
-			SDL_SetRenderDrawColor(renderer, 255, 255, 224, SDL_ALPHA_OPAQUE);
-			SDL_RenderClear(renderer);
-
-			update_snake();
-			render_apple();
-
-			SDL_RenderPresent(renderer);
-
-			SDL_Delay(50);
-		}
-	}
-
+	else
+		emscripten_set_main_loop(main_loop, 0, 1);
+	
 	quit_game();
 	return 0;
 }
 
-void handle_events(SDL_Event *e)
+void handle_events()
 {
-	while(SDL_PollEvent(e) != 0){
-		if((*e).type == SDL_QUIT){
-			running = false;
+	while(SDL_PollEvent(&e) != 0){
+		if(e.type == SDL_QUIT){
+			quit_game();
 		}
-		else if((*e).type == SDL_KEYDOWN){
-			switch((*e).key.keysym.sym){
+		else if(e.type == SDL_KEYDOWN){
+			switch(e.key.keysym.sym){
 				case SDLK_RIGHT:
 					change_snake_direction(RIGHT);
 					break;
@@ -98,6 +99,7 @@ void handle_events(SDL_Event *e)
 }
 
 void quit_game(void){
+	emscripten_cancel_main_loop();
 	SDL_DestroyWindow(window);
 	window = NULL;
 

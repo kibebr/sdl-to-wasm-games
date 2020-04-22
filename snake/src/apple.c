@@ -15,7 +15,7 @@ void render_apple()
 
 void generate_new_apple_pos(void)
 {
-	apple.x = (rand() % (SCREEN_WIDTH - 0 + 1));
+	apple.x = (rand() % (SCREEN_WIDTH - DEFAULT_APPLE_WIDTH + 1));
 	apple.y = (rand() % (SCREEN_HEIGHT - DEFAULT_APPLE_HEIGHT + 1));
 	apple.w = DEFAULT_APPLE_WIDTH;
 	apple.h = DEFAULT_APPLE_HEIGHT;

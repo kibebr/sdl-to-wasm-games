@@ -37,7 +37,7 @@ bool init_snake()
 
 void render_tail(SDL_Rect *tail)
 {   // renders individual parts of the snake
-	SDL_SetRenderDrawColor(getRenderer(), 204, 175, 175, SDL_ALPHA_OPAQUE);
+	SDL_SetRenderDrawColor(getRenderer(), 252, 191, 30, SDL_ALPHA_OPAQUE);
 	SDL_RenderFillRect(getRenderer(), tail);
 }
 
@@ -69,7 +69,7 @@ void update_snake(void)
 		}else{ // if it's the snake's body
 			if(abs(snake.head.rect.x - (*ptr).rect.x) < DEFAULT_WIDTH && // checks collision with the head
 			   abs(snake.head.rect.y - (*ptr).rect.y) < DEFAULT_HEIGHT)
-				set_freeze(true);
+				quit_game();
 
 			(*ptr).rect.x = (*ptr).previous->rect.x;
 			(*ptr).rect.y = (*ptr).previous->rect.y;
