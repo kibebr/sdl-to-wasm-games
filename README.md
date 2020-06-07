@@ -1,3 +1,2 @@
-<h1 align="center">sdl-to-wasm-games</h1>
-
-a compilation of games built with C and SDL ported to WebAssembly.
+## C to WASM games
+a compilation of games built with C and SDL compiled to WebAssembly through [Emscripten](https://emscripten.org/).
