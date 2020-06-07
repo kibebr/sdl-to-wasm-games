@@ -11,6 +11,8 @@
 #define PLAYER_MAX_VEL 2
 #define PLAYER_MAX_BACKWARDS_VEL -1
 
+#define PLAYER_TURNING_SPEED 3
+
 enum DIRECTION
 {
   LEFT=0, 

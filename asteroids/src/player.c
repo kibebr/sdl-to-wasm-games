@@ -171,10 +171,10 @@ void move_player(int dir)
       }
       break;
     case LEFT:
-      player.deg-=3;
+      player.deg -= PLAYER_TURNING_SPEED;
       break;
     case RIGHT:
-      player.deg+=3;
+      player.deg += PLAYER_TURNING_SPEED;
       break;
   }
 }
