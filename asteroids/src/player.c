@@ -46,8 +46,8 @@ void render_bullets(SDL_Renderer* renderer)
   SDL_SetRenderDrawColor(renderer, 124, 252, 0, SDL_ALPHA_OPAQUE);
 
   for(struct BulletNode *ptr = bullet_head; ptr != NULL; ptr = (*ptr).next){
-    (*ptr)._x += sin(deg2rad((*ptr).deg)) * 2;
-    (*ptr)._y -= cos(deg2rad((*ptr).deg)) * 2;
+    (*ptr)._x += sin(deg2rad((*ptr).deg)) * BULLET_SPEED;
+    (*ptr)._y -= cos(deg2rad((*ptr).deg)) * BULLET_SPEED;
     (*ptr).rect.x = (int)(*ptr)._x;
     (*ptr).rect.y = (int)(*ptr)._y;
 

@@ -2,11 +2,12 @@
 #define PLAYER
 
 
-#define BULLET_WIDTH 3
-#define BULLET_HEIGHT 3
+#define BULLET_WIDTH 2
+#define BULLET_HEIGHT 2
+#define BULLET_SPEED 3
 
-#define PLAYER_WIDTH 15
-#define PLAYER_HEIGHT 10
+#define PLAYER_WIDTH 10
+#define PLAYER_HEIGHT 5
 
 #define PLAYER_MAX_VEL 2
 #define PLAYER_MAX_BACKWARDS_VEL -1
