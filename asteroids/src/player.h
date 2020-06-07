@@ -1,0 +1,31 @@
+#ifndef PLAYER
+#define PLAYER
+
+
+#define BULLET_WIDTH 3
+#define BULLET_HEIGHT 3
+
+#define PLAYER_WIDTH 15
+#define PLAYER_HEIGHT 10
+
+#define PLAYER_MAX_VEL 2
+#define PLAYER_MAX_BACKWARDS_VEL -1
+
+enum DIRECTION
+{
+  LEFT=0, 
+  RIGHT=1, 
+  UP=2, 
+  DOWN=3
+};
+
+
+
+int init_player(void);
+void render_player(SDL_Renderer* renderer);
+void update_player(void);
+void player_shoot(void);
+void move_player(int dir);
+void free_player(void);
+
+#endif

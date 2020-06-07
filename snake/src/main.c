@@ -19,7 +19,8 @@ SDL_Event e;
 bool running = false;
 bool frozen = false;
 
-bool init(void){
+bool init(void)
+{
     bool success = true;
     window = NULL;
     renderer = NULL;
@@ -49,7 +50,8 @@ bool init(void){
     return success;
 }
 
-void main_loop(void){
+void main_loop(void)
+{
     handle_events();
 
     if(frozen)
@@ -58,12 +60,14 @@ void main_loop(void){
     SDL_SetRenderDrawColor(renderer, 18, 1, 54, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(renderer);
 
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+
     update_snake();
     render_apple();
 
     SDL_RenderPresent(renderer);
 
-    SDL_Delay(50);  
+    SDL_Delay(70);  
 }
 
 int main(int argc, char* args[])
@@ -111,7 +115,8 @@ void handle_events()
     }
 }
 
-void quit_game(void){
+void quit_game(void)
+{
     SDL_DestroyWindow(window);
     window = NULL;
 
@@ -122,7 +127,7 @@ void quit_game(void){
     SDL_Quit();
 
     #ifdef __EMSCRIPTEN__
-    emscripten_cancel_main_loop();
+        emscripten_cancel_main_loop();
     #endif
 }
 
@@ -131,4 +136,7 @@ void set_freeze(bool b)
     frozen = b;
 }
 
-SDL_Renderer* getRenderer() { return renderer; }
+SDL_Renderer* getRenderer()
+{ 
+    return renderer; 
+}

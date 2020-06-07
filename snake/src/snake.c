@@ -66,10 +66,10 @@ void update_snake(void)
         if((*ptr).previous == NULL){ // in other words, if this "tail" is the head
             snake.head.rect.x += snake.dx * DEFAULT_WIDTH;
             snake.head.rect.y += snake.dy * DEFAULT_HEIGHT;
-        }else{ // if it's the snake's body
-            if(abs(snake.head.rect.x - (*ptr).rect.x) < DEFAULT_WIDTH && // checks collision with the head
-               abs(snake.head.rect.y - (*ptr).rect.y) < DEFAULT_HEIGHT)
-                quit_game();
+        } else { // if it's the snake's body
+            //if(abs(snake.head.rect.x - (*ptr).rect.x) < DEFAULT_WIDTH && // checks collision with the head
+             //  abs(snake.head.rect.y - (*ptr).rect.y) < DEFAULT_HEIGHT)
+               // quit_game();
 
             (*ptr).rect.x = (*ptr).previous->rect.x;
             (*ptr).rect.y = (*ptr).previous->rect.y;
@@ -87,8 +87,6 @@ void push_tail()
     if(new_tail == NULL) 
         quit_game();
 
-    (*new_tail).rect.x = (*lasttail).rect.x + 30;
-    (*new_tail).rect.y = (*lasttail).rect.y;
     (*new_tail).rect.w = DEFAULT_WIDTH;
     (*new_tail).rect.h = DEFAULT_HEIGHT;
 
