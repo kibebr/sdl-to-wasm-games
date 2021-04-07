@@ -8,4 +8,4 @@ For now, only two games are added: Snake and Asteroids. Both games are written i
 Snake: https://kibebr.github.io/sdl-to-wasm-games/
 
 ## How?
-I wrote an article on how to easily make those games run in a web browser, [check it out!](https://kibebr.github.io/sdl-to-wasm-games/)
+I wrote an article on how to easily make those games run in a web browser, [check it out!](https://medium.com/swlh/i-made-a-game-in-c-run-in-a-web-browser-and-so-can-you-2911b9fe2368?sk=b839987dd50740634c898d90d7673bc7)
